@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.core.util.XboxControl;
 import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.ArmPID;
 import frc.robot.subsystems.Driver;
 import frc.robot.subsystems.Intake;
 // import frc.robot.subsystems.Pistons;
@@ -27,17 +28,16 @@ public class Robot extends TimedRobot {
 
   XboxControl pilot, copilot;
   public static Driver driver;
-  public static Arm arm;
+  public static ArmPID arm;
   public static Intake intake;
   // public static Pistons pistons;
   public static Compressor comp;
-   
 
   @Override
   public void robotInit() {
     comp     = new Compressor();
     driver   = new Driver();
-    arm      = new Arm();
+    arm      = new ArmPID();
     intake   = new Intake();
     pilot    = new XboxControl(0);
     copilot  = new XboxControl(1);
@@ -100,11 +100,10 @@ public class Robot extends TimedRobot {
   }
 
   public void disabledPeriodic(){
-
+    arm.print();
   }
 
   public void teleopInit(){
-    
   }
 }
 
