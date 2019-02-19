@@ -7,10 +7,14 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
+// import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.core.util.XboxControl;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Driver;
+import frc.robot.subsystems.Intake;
+// import frc.robot.subsystems.Pistons;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,13 +28,20 @@ public class Robot extends TimedRobot {
   XboxControl pilot, copilot;
   public static Driver driver;
   public static Arm arm;
+  public static Intake intake;
+  // public static Pistons pistons;
+  public static Compressor comp;
+   
 
   @Override
   public void robotInit() {
+    comp     = new Compressor();
     driver   = new Driver();
     arm      = new Arm();
+    intake   = new Intake();
     pilot    = new XboxControl(0);
     copilot  = new XboxControl(1);
+    // pistons = new Pistons();
   }
 
   @Override
@@ -58,12 +69,25 @@ public class Robot extends TimedRobot {
 
     driver.arcadeDrive(pilot.getAxisLeftY(), rotation);
 
-
     if (copilot.getButtonL1()) {
         arm.setSpeed(copilot.getAxisLeftY());
+        // pistons.setArm(true);
+
     } else {
         arm.setSpeed(0);
     }
+
+    if (copilot.getButtonR1()) {
+      intake.setSpeed(copilot.getAxisRightY()*-1);
+    } else {
+      intake.setSpeed(0);
+    }
+
+    // if (copilot.getTrigger()) {
+    //   pistons.setIntake(true);
+    // } else {
+    //   pistons.setIntake(false);
+    // }
 
     driver.print();
   }
@@ -71,4 +95,16 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
   }
+
+  public void disabledInit(){
+  }
+
+  public void disabledPeriodic(){
+
+  }
+
+  public void teleopInit(){
+    
+  }
 }
+
