@@ -1,5 +1,5 @@
 package frc.robot.subsystems;
-
+import edu.wpi.first.wpilibj.VictorSP;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
@@ -7,7 +7,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 public class Intake {
     // Encoder enc;
-    TalonSRX movIntake1, movIntake2, rolIntake;
+    TalonSRX movIntake1, movIntake2;
+    VictorSP rolIntake;
 
     public Intake() {
         movIntake1 = new TalonSRX(1);
