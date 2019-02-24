@@ -24,5 +24,9 @@ public class Camera{
             
             Mat source = new Mat();
             Mat output = new Mat();
+
+            cvSink.grabFrame(source);
+            Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
+            outputStream.putFrame(output);
     }
 }
