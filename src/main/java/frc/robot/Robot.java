@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import frc.core.util.XboxControl;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.ArmPID;
-import frc.robot.subsystems.Camera;
+// import frc.robot.subsystems.Camera;
 import frc.robot.subsystems.Driver;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Pistons;
@@ -33,7 +33,7 @@ public class Robot extends TimedRobot {
   public static Arm arm;
   public static Intake intake;
   public static Pistons pistons;
-  public static Camera camera;
+  // public static Camera camera;
 
   @Override
   public void robotInit() {
@@ -43,7 +43,7 @@ public class Robot extends TimedRobot {
     pilot    = new XboxControl(0);
     copilot  = new XboxControl(1);
     pistons  = new Pistons();
-    camera   = new Camera();
+    // camera   = new Camera();
 
 
   }
