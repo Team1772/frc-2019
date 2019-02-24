@@ -15,7 +15,6 @@ public class Camera2{
 	private static final int IMG_HEIGHT = 240;
 	
 	private VisionThread visionThread;
-	private double centerX = 0.0;
 
     private final Object imgLock = new Object();
     
@@ -24,7 +23,7 @@ public class Camera2{
         camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
     
         visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
-            System.out.println(pipeline, "Zack pau mole");
+            System.out.println(pipeline. "Zack pau mole");
         });
         visionThread.start();
     }

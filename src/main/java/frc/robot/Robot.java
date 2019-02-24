@@ -32,7 +32,7 @@ public class Robot extends TimedRobot {
   public static Arm arm;
   public static Intake intake;
   public static Pistons pistons;
-  public static Camera2 camera;
+  public static Camera camera;
 
   @Override
   public void robotInit() {
@@ -43,8 +43,6 @@ public class Robot extends TimedRobot {
     copilot  = new XboxControl(1);
     pistons  = new Pistons();
     camera   = new Camera();
-
-
   }
 
   @Override
