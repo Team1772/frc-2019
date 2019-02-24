@@ -45,7 +45,7 @@ public class Robot extends TimedRobot {
     copilot  = new XboxControl(1);
     pistons  = new Pistons();
     camera   = new Camera();
-    rolInt   = new rolIntake();
+    
   }
 
   @Override
@@ -106,9 +106,9 @@ public class Robot extends TimedRobot {
     }
     
     if (copilot.getButtonA()){
-      rolInt.setSpeed(copilot.getButtonA);
+      rolIntake.setSpeed(0.5);
     }else{
-      rolInt.setSpeed(0);
+      rolIntake.setSpeed(0);
     }
 
     driver.print();
