@@ -16,9 +16,9 @@ public class Pistons {
 
         comp       = new Compressor();
         climbBack  = new Solenoid(3);
-        climbFront = new Solenoid(4);
+        climbFront = new Solenoid(0);
         armEnable  = new Solenoid(2);
-        intake     = new DoubleSolenoid(0,1);
+        intake     = new DoubleSolenoid(4,1);
 
         setArmEnable(true);
 
