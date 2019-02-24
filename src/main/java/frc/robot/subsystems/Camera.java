@@ -1,24 +1,24 @@
 package frc.robot.subsystems;
 
 // import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.cameraserver.CameraServer;
 
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 
 public class Camera{
     
-    public Camera() {
+  /*public Camera() {
         new Thread(() -> {
             CameraServer.getInstance().startAutomaticCapture();
         }).start();
-    }
+    } */
 
-    public void advanced(){
+    public Camera(){
         new Thread(() -> {
             UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
             camera.setResolution(640, 480);
