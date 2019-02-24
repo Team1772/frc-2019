@@ -31,10 +31,7 @@ public class Pistons {
     }
 
     public void setClimbBack(boolean activate){
-        if (activate == true){
-            climbBack.set(true);
-        }
-
+            climbBack.set(activate);
     }
 
     public void setClimbFront(boolean activate){
