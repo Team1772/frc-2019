@@ -44,6 +44,7 @@ public class Robot extends TimedRobot {
     pistons  = new Pistons();
     camera   = new Camera();
 
+
   }
 
   @Override
@@ -95,13 +96,15 @@ public class Robot extends TimedRobot {
   }
 
   public void disabledInit(){
+    pistons.setArmEnable(false);
   }
 
   public void disabledPeriodic(){
-    System.out.println(arm.getRPM());
+    //System.out.println(arm.getRPM());
   }
 
   public void teleopInit(){
+
   }
 }
 
