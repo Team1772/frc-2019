@@ -33,6 +33,7 @@ public class Camera{
                 cvSink.grabFrame(source);
                 Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
                 outputStream.putFrame(output);
+                System.out.println(" Ta tudo ok ");
             }
         }).start();
     }
