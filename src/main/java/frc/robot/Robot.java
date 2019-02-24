@@ -44,6 +44,7 @@ public class Robot extends TimedRobot {
     pistons  = new Pistons();
     camera   = new Camera();
 
+
   }
 
   @Override
@@ -77,13 +78,13 @@ public class Robot extends TimedRobot {
       intake.setSpeed(0);
     }
 
-    if (copilot.getButtonA()){
+    if (copilot.getButtonA()) {
       intake.setSpeedRol(0.5);
-    }else{
+    } else {
       intake.setSpeedRol(0);
     }
 
-    if (copilot.getButtonB()){
+    if (copilot.getButtonB()) {
       pistons.setClimbBack(true);
     }
 
@@ -94,14 +95,14 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
   }
 
-  public void disabledInit(){
+  public void disabledInit() {
+    pistons.setArmEnable(false);
   }
 
-  public void disabledPeriodic(){
-    System.out.println(arm.getRPM());
+  public void disabledPeriodic() {
+    arm.getRPM();
   }
 
-  public void teleopInit(){
-  }
+  public void teleopInit() {}
 }
 
