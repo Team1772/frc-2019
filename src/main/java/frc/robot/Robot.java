@@ -44,7 +44,6 @@ public class Robot extends TimedRobot {
     copilot  = new XboxControl(1);
     pistons  = new Pistons();
     camera   = new Camera();
-    camera.simple();
   }
 
   @Override

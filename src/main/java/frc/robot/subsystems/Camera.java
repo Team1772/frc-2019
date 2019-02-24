@@ -11,8 +11,8 @@ import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 
 public class Camera{
-
-    public void simple() {
+    
+    public Camera() {
         new Thread(() -> {
             CameraServer.getInstance().startAutomaticCapture();
         }).start();
