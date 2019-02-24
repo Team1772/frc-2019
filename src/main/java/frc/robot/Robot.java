@@ -100,7 +100,7 @@ public class Robot extends TimedRobot {
   }
 
   public void disabledPeriodic() {
-    arm.getRPM();
+    // arm.getRPM();
   }
 
   public void teleopInit() {}
