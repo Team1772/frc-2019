@@ -6,27 +6,41 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 
 public class Arm {
-    TalonSRX left, right;
+    TalonSRX master, follower;
     boolean maxLimit;
+
+    // From core/util/SpeedControl.java
+    long currentTime = System.currentTimeMillis(), lastTime = System.currentTimeMillis();
+    double rpm = 0, lastPos = 0;
 
     public Arm() {
 
-        left = new TalonSRX(0);
-        right = new TalonSRX(3);
+        // Left
+        master = new TalonSRX(0);
+        // Right
+        follower = new TalonSRX(3);
 
-        right.setInverted(true);
-
-        right.follow(left);
+        follower.configFactoryDefault();
+        follower.setInverted(true);
+        follower.follow(master);
 
 
 		/* Config the sensor used for Primary PID and sensor direction */
-        left.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 30);
+        master.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 30);
         // Inverte o encoder
-        left.setSensorPhase(false);
+        master.setSensorPhase(false);
+
+        // Config the peak and nominal outputs, 12V means full 
+		master.configNominalOutputForward(0, 30);
+		master.configNominalOutputReverse(0, 30);
+		master.configPeakOutputForward(1, 30);
+		master.configPeakOutputReverse(-1, 30);
 
         // Safety limit
 		// Fica true se passar do valor maximo ou do minimo
-		maxLimit = left.getSelectedSensorPosition(0) > 50000;
+        maxLimit = master.getSelectedSensorPosition(0) > 50000;
+
+        lastPos = master.getSelectedSensorPosition();
     }
 
     // Sempre use essa função para mexer o braco pois ela tem o safety limit
@@ -35,21 +49,20 @@ public class Arm {
         if (maxLimit)
             speed = 0;
 
-        left.set(ControlMode.PercentOutput, speed);
-        right.set(ControlMode.PercentOutput, speed);
+            master.set(ControlMode.PercentOutput, speed);
     }
 
     // From core/util/SpeedControl.java
-    private long currentTime = System.currentTimeMillis(), lastTime = System.currentTimeMillis();
-    private double rpm = 0, lastPos = 0;
     public double getRPM() {
         currentTime = System.currentTimeMillis() - lastTime;
     	if (currentTime >= 100) {
-            rpm = left.getSelectedSensorPosition() - lastPos;
+            rpm = master.getSelectedSensorPosition() - lastPos;
 
             lastTime = System.currentTimeMillis();
-            lastPos = left.getSelectedSensorPosition();
+            lastPos = master.getSelectedSensorPosition();
+            System.out.println("RPM: " + rpm);
     	}
+        System.out.println("Position: " + master.getSelectedSensorPosition());
     	return rpm;
     }
 }
