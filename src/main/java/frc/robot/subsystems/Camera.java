@@ -31,7 +31,7 @@ public class Camera{
 
             while(!Thread.interrupted()) {
                 cvSink.grabFrame(source);
-                Imgproc.cvtColor(source, output, Imgproc.COLOR_GRAY2BGRA);
+                Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
                 outputStream.putFrame(output);
             }
         }).start();
