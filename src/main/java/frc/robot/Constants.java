@@ -22,7 +22,7 @@ public class Constants {
 	 * report to DS if action fails.
 	 */
 	public static final int kTimeoutMs = 30;
-	
+
 	/* Choose so that Talon does not report sensor out of phase */
 	public static boolean kSensorPhase = false;
 

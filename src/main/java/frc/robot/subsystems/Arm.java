@@ -30,12 +30,6 @@ public class Arm {
         // Inverte o encoder
         master.setSensorPhase(false);
 
-        // Config the peak and nominal outputs, 12V means full 
-		master.configNominalOutputForward(0, 30);
-		master.configNominalOutputReverse(0, 30);
-		master.configPeakOutputForward(1, 30);
-		master.configPeakOutputReverse(-1, 30);
-
         // Safety limit
 		// Fica true se passar do valor maximo ou do minimo
         maxLimit = master.getSelectedSensorPosition(0) > 50000;
@@ -56,7 +50,7 @@ public class Arm {
     public double getRPM() {
         currentTime = System.currentTimeMillis() - lastTime;
     	if (currentTime >= 100) {
-            rpm = master.getSelectedSensorPosition() - lastPos;
+            rpm = Math.abs(master.getSelectedSensorPosition() - lastPos);
 
             lastTime = System.currentTimeMillis();
             lastPos = master.getSelectedSensorPosition();
