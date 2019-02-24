@@ -12,7 +12,7 @@ import edu.wpi.cscore.UsbCamera;
 
 public class Camera{
 
-    public Camera() {
+    public void simple() {
         new Thread(() -> {
             CameraServer.getInstance().startAutomaticCapture();
         }).start();

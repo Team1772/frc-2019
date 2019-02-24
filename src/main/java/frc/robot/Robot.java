@@ -32,13 +32,11 @@ public class Robot extends TimedRobot {
   public static Arm arm;
   public static Intake intake;
   public static Pistons pistons;
-  public static Compressor comp;
   public static Camera camera;
    
 
   @Override
   public void robotInit() {
-    comp     = new Compressor();
     driver   = new Driver();
     arm      = new Arm();
     intake   = new Intake();
@@ -46,6 +44,7 @@ public class Robot extends TimedRobot {
     copilot  = new XboxControl(1);
     pistons  = new Pistons();
     camera   = new Camera();
+    camera.simple();
   }
 
   @Override
@@ -99,7 +98,7 @@ public class Robot extends TimedRobot {
       pistons.setClimbBack(false);
     }
 
-    if (copilot.getTrigger()) {
+    if (copilot.getButtonY()) {
       pistons.setIntake(true);
     } else {
       pistons.setIntake(false);

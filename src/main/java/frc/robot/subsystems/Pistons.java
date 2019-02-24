@@ -13,13 +13,13 @@ public class Pistons {
     public Pistons() {
 
         comp = new Compressor();
-        armLeft = new DoubleSolenoid(0,1);
-        armRight = new DoubleSolenoid(0,1);
-        intake = new DoubleSolenoid(0,1);
-        climbFrontLeft = new DoubleSolenoid(0,1);
-        climbFrontRight = new DoubleSolenoid(0,1);
-        climbBackLeft = new DoubleSolenoid(0,1);
-        climbBackRight = new DoubleSolenoid(0,1);
+        // armLeft = new DoubleSolenoid(0,1);
+        // armRight = new DoubleSolenoid(0,1);
+        // intake = new DoubleSolenoid(0,1);
+        // climbFrontLeft = new DoubleSolenoid(0,1);
+        // climbFrontRight = new DoubleSolenoid(0,1);
+        // climbBackLeft = new DoubleSolenoid(0,1);
+        // climbBackRight = new DoubleSolenoid(0,1);
 
     }
 
