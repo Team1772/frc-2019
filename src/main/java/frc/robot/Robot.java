@@ -106,9 +106,9 @@ public class Robot extends TimedRobot {
     }
     
     if (copilot.getButtonA()){
-      rolIntake.setSpeed(0.5);
+      Intake.setSpeedRol(0.5);
     }else{
-      rolIntake.setSpeed(0);
+      Intake.setSpeedRol(0);
     }
 
     driver.print();
