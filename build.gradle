@@ -39,9 +39,7 @@ def includeDesktopSupport = false
 
 // Maven central needed for JUnit
 repositories {
-    mavenCentral{
-        url 'https://github.com/WPIRoboticsProjects/opencv-maven/raw/mvn-repo'
-    }
+    mavenCentral()
 }
 
 // Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
@@ -52,7 +50,6 @@ dependencies {
     nativeZip wpi.deps.vendor.jni(wpi.platforms.roborio)
     nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
     testCompile 'junit:junit:4.12'
-    compile group: 'edu.wpi.first.wpilib.opencv', name: 'opencv-installer', version: '+'
 }
 
 // Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')

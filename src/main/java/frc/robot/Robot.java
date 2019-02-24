@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import frc.core.util.XboxControl;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.ArmPID;
+import frc.robot.subsystems.Camera;
 import frc.robot.subsystems.Driver;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Pistons;
@@ -32,6 +33,7 @@ public class Robot extends TimedRobot {
   public static Intake intake;
   public static Pistons pistons;
   public static Compressor comp;
+  public static Camera camera;
    
 
   @Override
@@ -42,7 +44,8 @@ public class Robot extends TimedRobot {
     intake   = new Intake();
     pilot    = new XboxControl(0);
     copilot  = new XboxControl(1);
-    pistons = new Pistons();
+    pistons  = new Pistons();
+    camera   = new Camera();
   }
 
   @Override
@@ -72,7 +75,7 @@ public class Robot extends TimedRobot {
 
     if (copilot.getButtonL1()) {
         arm.setSpeed(copilot.getAxisLeftY());
-        // pistons.setArm(true);
+        pistons.setArm(true);
 
     } else {
         arm.setSpeed(0);
@@ -96,11 +99,11 @@ public class Robot extends TimedRobot {
       pistons.setClimbBack(false);
     }
 
-    // if (copilot.getTrigger()) {
-    //   pistons.setIntake(true);
-    // } else {
-    //   pistons.setIntake(false);
-    // }
+    if (copilot.getTrigger()) {
+      pistons.setIntake(true);
+    } else {
+      pistons.setIntake(false);
+    }
 
     driver.print();
   }

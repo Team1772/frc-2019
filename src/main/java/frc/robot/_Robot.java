@@ -131,8 +131,10 @@ public class _Robot extends TimedRobot {
 		_sb.append("u"); 	// Native units
 
 		// Fica true se passar do valor maximo ou do minimo
-		boolean maxPos = _talon.getSelectedSensorPosition(0) > 2200 || _talon.getSelectedSensorPosition(0) < 1508;
+		boolean maxPos = _talon.getSelectedSensorPosition(0) > 50000;
 
+		_sb.append("\tmax:");
+		_sb.append(maxPos);
 		/**
 		 * When button 1 is pressed, perform Position Closed Loop to selected position,
 		 * indicated by Joystick position x10, [-10, 10] rotations
@@ -141,7 +143,7 @@ public class _Robot extends TimedRobot {
 			/* Position Closed Loop */
 
 			/* 10 Rotations * 4096 u/rev in either direction */
-			targetPositionRotations = leftYstick * 1 * 2200;
+			targetPositionRotations = leftYstick * 10 * 4096;
 			_talon.set(ControlMode.Position, targetPositionRotations);
 		}
 
