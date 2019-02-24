@@ -33,8 +33,6 @@ public class Robot extends TimedRobot {
   public static Intake intake;
   public static Pistons pistons;
   public static Camera camera;
-  
-   
 
   @Override
   public void robotInit() {
@@ -104,7 +102,7 @@ public class Robot extends TimedRobot {
     } else {
       pistons.setIntake(false);
     }
-    
+
     if (copilot.getButtonA()){
       intake.setSpeedRol(0.5);
     }else{
@@ -122,11 +120,10 @@ public class Robot extends TimedRobot {
   }
 
   public void disabledPeriodic(){
-
+    System.out.println(arm.getRPM());
   }
 
   public void teleopInit(){
-    
   }
 }
 

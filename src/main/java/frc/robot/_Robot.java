@@ -181,11 +181,11 @@ public class _Robot extends TimedRobot {
 
 		/* Reset built string for next loop */
 		_sb.setLength(0);
-		
+
 		/* Save button state for on press detect */
 		_lastButton1 = button1;
     }
-    
+
 	/**
 	 * This function is called periodically during operator control
 	 */

@@ -30,7 +30,6 @@ public class Pistons {
         } else {
             climbFrontRight.set(DoubleSolenoid.Value.kReverse);
             climbFrontLeft.set(DoubleSolenoid.Value.kReverse);
-        
         }
     }
 
@@ -41,7 +40,6 @@ public class Pistons {
         } else {
             climbBackRight.set(DoubleSolenoid.Value.kReverse);
             climbBackLeft.set(DoubleSolenoid.Value.kReverse);
-        
         }
     }
 
