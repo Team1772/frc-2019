@@ -7,12 +7,11 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 public class Intake {
     // Encoder enc;
-    TalonSRX movIntake1, movIntake2;
+    TalonSRX movIntake1, movIntake2, rolIntake;
 
     public Intake() {
         movIntake1 = new TalonSRX(1);
         movIntake2 = new TalonSRX(2);
-        rolIntake  = new TalonSRX();
 
         // (Wheel Size centimeter * Math.PI) / Encoder Counts Per Revolution
 		// enc.setDistancePerPulse(distancePerPulse);
