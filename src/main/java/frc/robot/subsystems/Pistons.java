@@ -8,17 +8,26 @@ import edu.wpi.first.wpilibj.Solenoid;
 
 public class Pistons {
     
-    Solenoid climbBack, climbFront; 
+    Solenoid climbBack, climbFront, armEnable; 
     DoubleSolenoid intake; 
     Compressor comp;
 
     public Pistons() {
 
-        comp = new Compressor();
-        climbBack = new Solenoid(3);
+        comp       = new Compressor();
+        climbBack  = new Solenoid(3);
         climbFront = new Solenoid(4);
-        intake = new DoubleSolenoid(0,1);
+        armEnable  = new Solenoid(2);
+        intake     = new DoubleSolenoid(0,1);
 
+        setArmEnable(true);
+
+    }
+
+    public void setArmEnable(boolean activate){
+        if(activate == true){
+            armEnable.set(true);
+        }
     }
 
     public void setClimbBack(boolean activate){
