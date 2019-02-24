@@ -21,6 +21,7 @@ public class Intake {
     public void setSpeed(double speed) {
         movIntake1.set(ControlMode.PercentOutput, speed);
         movIntake2.set(ControlMode.PercentOutput, speed);
+         rolIntake.set(ControlMode.PercentOutput, speed);
         // SmartDashboard.putNumber("Arm encoder", enc.get());
     }
 }
