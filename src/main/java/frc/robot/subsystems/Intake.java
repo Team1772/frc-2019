@@ -12,6 +12,7 @@ public class Intake {
     public Intake() {
         movIntake1 = new TalonSRX(1);
         movIntake2 = new TalonSRX(2);
+        rolIntake  = new TalonSRX(0);
 
         // (Wheel Size centimeter * Math.PI) / Encoder Counts Per Revolution
 		// enc.setDistancePerPulse(distancePerPulse);
