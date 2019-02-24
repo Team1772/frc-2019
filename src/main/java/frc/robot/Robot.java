@@ -14,10 +14,15 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import frc.core.util.XboxControl;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.ArmPID;
-import frc.robot.subsystems.Camera;
 import frc.robot.subsystems.Driver;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Pistons;
+import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
+import edu.wpi.cscore.CvSink;
+import edu.wpi.cscore.CvSource;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
