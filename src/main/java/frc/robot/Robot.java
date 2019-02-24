@@ -73,42 +73,20 @@ public class Robot extends TimedRobot {
 
     driver.arcadeDrive(pilot.getAxisLeftY(), rotation);
 
-    if (copilot.getButtonL1()) {
-        arm.setSpeed(copilot.getAxisLeftY());
-        pistons.setArm(true);
-
-    } else {
-        arm.setSpeed(0);
-    }
-
     if (copilot.getButtonR1()) {
       intake.setSpeed(copilot.getAxisRightY()*-1);
     } else {
       intake.setSpeed(0);
     }
 
-    if(copilot.getButtonX()){
-      pistons.setClimbFront(true);
-    }else{
-      pistons.setClimbFront(false);
-    }
-
-    if(copilot.getButtonB()){
-      pistons.setClimbBack(true);
-    }else{
-      pistons.setClimbBack(false);
-    }
-
-    if (copilot.getButtonY()) {
-      pistons.setIntake(true);
-    } else {
-      pistons.setIntake(false);
-    }
-    
     if (copilot.getButtonA()){
       intake.setSpeedRol(0.5);
     }else{
       intake.setSpeedRol(0);
+    }
+
+    if (copilot.getButtonB()){
+      pistons.setClimbBack(true);
     }
 
     driver.print();

@@ -15,14 +15,24 @@ public class Pistons {
     public Pistons() {
 
         comp = new Compressor();
-        climbBack = new Solenoid(0);
-        climbFront = new Solenoid(0);
+        climbBack = new Solenoid(3);
+        climbFront = new Solenoid(4);
         intake = new DoubleSolenoid(0,1);
 
     }
 
-    public void setclimbBack(boolean activate){
-        climbBack.set(activate);
+    public void setClimbBack(boolean activate){
+        if (activate == true){
+            climbBack.set(true);
+        }
+
+    }
+
+    public void setClimbFront(boolean activate){
+        if(activate == true){
+            climbFront.set(true);
+        }
+
     }
 
     public void setIntake(boolean activate){
