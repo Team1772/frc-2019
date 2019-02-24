@@ -9,7 +9,10 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+<<<<<<< HEAD
 import edu.wpi.first.wpilibj.Solenoid;
+=======
+>>>>>>> parent of 95b203b... no camera
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.core.util.XboxControl;
 import frc.robot.subsystems.Arm;
@@ -63,7 +66,10 @@ public class Robot extends TimedRobot {
   double rotation = 0;
   @Override
   public void teleopPeriodic() {
+<<<<<<< HEAD
     //camera.asd();
+=======
+>>>>>>> parent of 95b203b... no camera
 
     rotation = pilot.getAxisRightX();
 
@@ -90,10 +96,13 @@ public class Robot extends TimedRobot {
       pistons.setClimbBack(true);
     }
 
+<<<<<<< HEAD
     if (copilot.getButtonX()) {
       pistons.setClimbFront(true);
     }
 
+=======
+>>>>>>> parent of 95b203b... no camera
     driver.print();
   }
 
@@ -106,7 +115,11 @@ public class Robot extends TimedRobot {
   }
 
   public void disabledPeriodic() {
+<<<<<<< HEAD
     //arm.getRPM();
+=======
+    arm.getRPM();
+>>>>>>> parent of 95b203b... no camera
   }
 
   public void teleopInit() {}

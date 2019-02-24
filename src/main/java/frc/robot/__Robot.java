@@ -8,7 +8,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.*;
 
-public class Robot extends TimedRobot {
+public class __Robot extends TimedRobot {
 	/** Hardware */
 	public static Compressor comp;
 	TalonSRX _talon = new TalonSRX(0);
