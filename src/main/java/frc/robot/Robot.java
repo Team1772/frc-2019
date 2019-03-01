@@ -30,7 +30,6 @@ import edu.wpi.first.wpilibj.Solenoid;
 import frc.core.util.XboxControl;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.ArmPID;
-// import frc.robot.subsystems.Camera;
 import frc.robot.subsystems.Driver;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Pistons;
@@ -49,6 +48,7 @@ import edu.wpi.first.wpilibj.Compressor;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.*;
+
 
 public class Robot extends TimedRobot {
 	XboxControl pilot, copilot;
@@ -85,6 +85,7 @@ public class Robot extends TimedRobot {
 		pistons  = new Pistons();
 
 		comp = new Compressor();
+
 
 		// _talon2.set(ControlMode.Position, -4000);
 
@@ -275,7 +276,7 @@ public class Robot extends TimedRobot {
 		if ((copilot.getAxisZLeft() >= 0.5) && !maxPos) {
 			/* Percent Output */
 			_talon.set(ControlMode.PercentOutput, rightYstick);
-						
+
 		}
 
 		if((copilot.getAxisZLeft() >= 0.5)){
