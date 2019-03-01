@@ -3,7 +3,7 @@
  */
 package frc.robot;
 
-public class Constants {
+public class ConstantsIntake {
 	/**
 	 * Which PID slot to pull gains from. Starting 2018, you can choose from
 	 * 0,1,2 or 3. Only the first two (0,1) are visible in web-based
@@ -24,19 +24,19 @@ public class Constants {
 	public static final int kTimeoutMs = 30;
 
 	/* Choose so that Talon does not report sensor out of phase */
-	public static boolean kSensorPhase = true;
+	public static boolean kSensorPhase = false;
 
 	/**
 	 * Choose based on what direction you want to be positive,
 	 * this does not affect motor invert. 
 	 */
-	public static boolean kMotorInvert = false;
+	public static boolean kMotorInvert = true;
 
 	/**
 	 * Gains used in Positon Closed Loop, to be adjusted accordingly
      * Gains(kp, ki, kd, kf, izone, peak output);
      */
 	// static final Gains kGains = new Gains(0.15, 0.0, 1.0, 0.0, 0, 1.0);
-	static final Gains kGains = new Gains(0.2, 0.0, 2.5, 0.0, 0, 1.0);
+	static final Gains kGains = new Gains(0.8, 0.0, 8.0, 0.0, 0, 1.0);
 	//static final Gains kGains = new Gains(0.125, 0.0, 0.0, 0.0, 0, 1.0);
 }

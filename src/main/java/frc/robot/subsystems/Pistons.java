@@ -8,37 +8,33 @@ import edu.wpi.first.wpilibj.Solenoid;
 
 public class Pistons {
     
-    Solenoid climbBack, climbFront, armEnable; 
-    DoubleSolenoid intake; 
+    Solenoid climbBack, armEnable;
+    DoubleSolenoid climbFront, intake; 
     Compressor comp;
 
     public Pistons() {
 
         comp       = new Compressor();
-        climbBack  = new Solenoid(3);
-        climbFront = new Solenoid(4);
-        armEnable  = new Solenoid(2);
-        intake     = new DoubleSolenoid(0,1);
-
-        setArmEnable(true);
-
+        climbBack  = new Solenoid(0);
+        climbFront = new DoubleSolenoid(6,7);
+        armEnable  = new Solenoid(1);
+        intake     = new DoubleSolenoid(2,5);
     }
 
     public void setArmEnable(boolean activate){
         if(activate == true){
             armEnable.set(true);
+        } else {
+            armEnable.set(false);
         }
     }
 
     public void setClimbBack(boolean activate){
-            climbBack.set(activate);
-    }
-
-    public void setClimbFront(boolean activate){
         if(activate == true){
-            climbFront.set(true);
+            climbBack.set(true);
+        }else{
+            climbBack.set(false);
         }
-
     }
 
     public void setIntake(boolean activate){
@@ -47,6 +43,17 @@ public class Pistons {
 
         } else {
             intake.set(DoubleSolenoid.Value.kReverse);
+
+        }
+
+    }
+
+    public void setclimbFront(boolean activate){
+        if (activate == true){
+            climbFront.set(DoubleSolenoid.Value.kForward);
+
+        } else {
+            climbFront.set(DoubleSolenoid.Value.kReverse);
 
         }
 
