@@ -133,8 +133,8 @@ public class Robot extends TimedRobot {
 		/* Config the peak and nominal outputs, 12V means full */
 		_talon.configNominalOutputForward(0, Constants.kTimeoutMs);
 		_talon.configNominalOutputReverse(0, Constants.kTimeoutMs);
-		_talon.configPeakOutputForward(0.6, Constants.kTimeoutMs);
-		_talon.configPeakOutputReverse(-0.6, Constants.kTimeoutMs);
+		_talon.configPeakOutputForward(0.65, Constants.kTimeoutMs);
+		_talon.configPeakOutputReverse(-0.65, Constants.kTimeoutMs);
 
 		/**
 		 * Config the allowable closed-loop error, Closed-Loop output will be
@@ -306,7 +306,7 @@ public class Robot extends TimedRobot {
 
 		//  Posição D - Bola
 		 if(copilot.getButtonY()){
-			_talon.set(ControlMode.Position, zeroenc_arm - 50000);
+			_talon.set(ControlMode.Position, zeroenc_arm - 51000);
 			_talon2.set(ControlMode.Position, zeroenc_intake + 670);
 		 }
 
@@ -320,7 +320,7 @@ public class Robot extends TimedRobot {
 		 if(copilot.getButtonStart()){
 			if(limitSwitchArmDown.get() == true) _talon.set(ControlMode.PercentOutput, 0.20);
 			 else _talon.set(ControlMode.PercentOutput, 0);
-			_talon2.set(ControlMode.Position, zeroenc_intake + 230);
+			_talon2.set(ControlMode.Position, zeroenc_intake + 190);
 		 }
 
 		//  Posição C- Hatch
@@ -387,7 +387,7 @@ public class Robot extends TimedRobot {
 
 		// Intake	
 		if (copilot.getButtonL1()) intake.setSpeedRol(0.30);
-		else if(copilot.getButtonR1()) intake.setSpeedRolBack(0.80);
+		else if(copilot.getButtonR1()) intake.setSpeedRolBack(0.50);
 		else intake.setSpeedRol(0);
 
 		if (copilot.getAxisZRight() >= 0.3) {
