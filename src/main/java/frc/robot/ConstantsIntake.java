@@ -37,6 +37,6 @@ public class ConstantsIntake {
      * Gains(kp, ki, kd, kf, izone, peak output);
      */
 	// static final Gains kGains = new Gains(0.15, 0.0, 1.0, 0.0, 0, 1.0);
-	static final Gains kGains = new Gains(0.8, 0.0, 8.0, 0.0, 0, 1.0);
+	static final Gains kGains = new Gains(0.6, 0.0, 6.0, 0.0, 0, 1.0);
 	//static final Gains kGains = new Gains(0.125, 0.0, 0.0, 0.0, 0, 1.0);
 }
