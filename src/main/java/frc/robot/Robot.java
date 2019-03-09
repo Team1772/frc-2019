@@ -111,6 +111,8 @@ public class Robot extends TimedRobot {
 		/** Encoder Reset */
 		FeedbackDevice.valueOf(0);
 
+		//---Arm---Arm---Arm---Arm---Arm---Arm---Arm---Arm---Arm---Arm---Arm---Arm---Arm---Arm---Arm---Arm---Arm--->
+
 		/** Talon 3 */
 		_follower1.configFactoryDefault();
 		_follower1.setInverted(true);
@@ -395,7 +397,7 @@ public class Robot extends TimedRobot {
 		}else{
 			pistons.setIntake(false);
 		}
-
+		
 		//Climb
 		if (pilot.getButtonL1()) {
 		pistons.setClimbBack(true);
