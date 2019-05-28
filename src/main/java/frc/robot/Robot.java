@@ -19,8 +19,8 @@
  * 
  * Supported Version:
  * - Talon SRX: 4.00
- * - Victor SPX: 4.00
- * - Pigeon IMU: 4.00
+ * - Victor SPX: 4.00p
+ * - Pigeon IMU: 4.001
  * - CANifier: 4.00
  */
 package frc.robot;
@@ -100,13 +100,13 @@ public class Robot extends TimedRobot {
 		copilot  = new XboxControl(1);
 		pistons  = new Pistons();
 		comp 	 = new Compressor();
-		camera 	 = new Camera();
+		// camera 	 = new Camera();
 
 		/** Sensores */
 		limitSwitchArmDown = new DigitalInput(0);
 		limitSwitchArmUp = new DigitalInput(1);
 		limitSwitchIntakeDown = new DigitalInput(2);
-		limitSwitchIntakeUp = new DigitalInput(9);
+		limitSwitchIntakeUp = new DigitalInput(3);
 
 		/** Encoder Reset */
 		FeedbackDevice.valueOf(0);
@@ -129,7 +129,7 @@ public class Robot extends TimedRobot {
 		/**
 		 * Set based on what direction you want forward/positive to be.
 		 * This does not affect sensor phase. 
-		 */ 
+		 */
 		_talon.setInverted(Constants.kMotorInvert);
 
 		/* Config the peak and nominal outputs, 12V means full */
@@ -164,13 +164,13 @@ public class Robot extends TimedRobot {
 		
 		/* Set the quadrature (relative) sensor to match absolute */
 		_talon.setSelectedSensorPosition(absolutePosition, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
-
+		
 
 		//----INTAKE------------------INTAKE------------------INTAKE------------------INTAKE------------------INTAKE--------->
-
+		
 		/** Talon 2 */
 		_follower2.configFactoryDefault();
-		_follower2.setInverted(true);
+		_follower2.setInverted(false);
 		_follower2.follow(_talon2);
 		
 		/* Config the sensor used for Primary PID and sensor direction */
@@ -230,23 +230,23 @@ public class Robot extends TimedRobot {
 		_sb.append(_talon.getSelectedSensorPosition(0));
 		_sb.append("  Intake Pos:");
 		_sb.append(_talon2.getSelectedSensorPosition(0));
-		_sb.append("  Zero Encoder:");
+		_sb.append("  Zero Encoder: ");
 		_sb.append(zeroenc_arm);
-		_sb.append("  Zero Intake:");
+		_sb.append("  Zero Intake: ");
 		_sb.append(zeroenc_intake);
 
 		/** Printar as informações dos sensores */
-		_sb.append("\nArm UP:");
-		_sb.append(limitSwitchArmUp.get());
+		// _sb.append("\nArm UP:");
+		// _sb.append(limitSwitchArmUp.get() + "\n");
 
-		_sb.append("  Arm DOWN:");
+		_sb.append("  Arm DOWN: ");
 		_sb.append(limitSwitchArmDown.get());
 
-		_sb.append("  Intake UP:");
+		_sb.append("  Intake UP: ");
 		_sb.append(limitSwitchIntakeUp.get());
 
-		_sb.append("  Intake DOWN:");
-		_sb.append(limitSwitchIntakeDown.get());
+		// _sb.append("  Intake DOWN:");
+		// _sb.append(limitSwitchIntakeDown.get() + "\n");
 
 
 		/* Gamepad processing */
@@ -295,34 +295,34 @@ public class Robot extends TimedRobot {
 
 		// Posição A inicial
 		 if(copilot.getButtonA()){
-			 if(limitSwitchArmDown.get() == true) _talon.set(ControlMode.PercentOutput, 0.20);
+			 if(limitSwitchArmDown.get() == true) _talon.set(ControlMode.PercentOutput, 0.15);
 			 else _talon.set(ControlMode.PercentOutput, 0);
 			_talon2.set(ControlMode.Position, zeroenc_intake - 40);
 		 }
 
 		//  Posição F - Bola
 		 if(copilot.getButtonB()){
-			_talon.set(ControlMode.Position, zeroenc_arm - 20000);
+			_talon.set(ControlMode.Position, zeroenc_arm - 20500);
 			_talon2.set(ControlMode.Position, zeroenc_intake + 750);
 		 } 
 
 		//  Posição D - Bola
 		 if(copilot.getButtonY()){
-			_talon.set(ControlMode.Position, zeroenc_arm - 51000);
+			_talon.set(ControlMode.Position, zeroenc_arm - 54000);
 			_talon2.set(ControlMode.Position, zeroenc_intake + 670);
 		 }
 
 		//  Posição B - Bola
 		if(copilot.getButtonX()){
-			_talon.set(ControlMode.Position, zeroenc_arm - 40000);
+			_talon.set(ControlMode.Position, zeroenc_arm - 42000);
 			_talon2.set(ControlMode.Position, zeroenc_intake + 790);
 		}
 
 		//  Posição E - Hatch
 		 if(copilot.getButtonStart()){
-			if(limitSwitchArmDown.get() == true) _talon.set(ControlMode.PercentOutput, 0.20);
+			if(limitSwitchArmDown.get() == true) _talon.set(ControlMode.PercentOutput, 0.15);
 			 else _talon.set(ControlMode.PercentOutput, 0);
-			_talon2.set(ControlMode.Position, zeroenc_intake + 190);
+			_talon2.set(ControlMode.Position, zeroenc_intake + 210);
 		 }
 
 		//  Posição C- Hatch
@@ -388,8 +388,9 @@ public class Robot extends TimedRobot {
     	driver.arcadeDrive(pilot.getAxisLeftY(), pilot.getAxisRightX());
 
 		// Intake	
-		if (copilot.getButtonL1()) intake.setSpeedRol(0.30);
-		else if(copilot.getButtonR1()) intake.setSpeedRolBack(0.50);
+		if(copilot.getButtonR1() && copilot.getButtonL1()) intake.setSpeedRolBack(0.10);
+		else if (copilot.getButtonL1()) intake.setSpeedRol(-0.60);
+		else if(copilot.getButtonR1()) intake.setSpeedRolBack(-1);
 		else intake.setSpeedRol(0);
 
 		if (copilot.getAxisZRight() >= 0.3) {
@@ -397,36 +398,47 @@ public class Robot extends TimedRobot {
 		}else{
 			pistons.setIntake(false);
 		}
-		
-		//Climb
-		if (pilot.getButtonL1()) {
-		pistons.setClimbBack(true);
-		}else{
-		pistons.setClimbBack(false);
-		}
 
-		if (pilot.getButtonR1()) {
-		pistons.setclimbFront(true);
-		}else{
-		pistons.setclimbFront(false);
-		}
+		// //Climb
+		// if (pilot.getButtonL1()) {
+		// pistons.setClimbBack(true);
+		// }else{
+		// pistons.setClimbBack(false);
+		// }
 
-		/** Analógico Arm */
-		if (copilot.getAxisZRight() >= 0.5){
-		pistons.setArmEnable(true);
-		} else {
-		pistons.setArmEnable(false);
-		}
+		// if (pilot.getButtonR1()) {
+		// pistons.setclimbFront(true);
+		// }else{
+		// pistons.setclimbFront(false);
+		// }
+
+		// /** Analógico Arm */
+		// if (copilot.getAxisZRight() >= 0.5){
+		// pistons.setArmEnable(true);
+		// } else {
+		// pistons.setArmEnable(false);
+		// }
 
 		driver.print();
 	}
 
+	public void autonomousInit(){
+		commonLoop();
+		teleopInit();
+		teleopPeriodic();
+	}
+
+	public void autonomousPeriodic(){
+		commonLoop();
+		teleopInit();
+		teleopPeriodic();
+	}
 
 	/** Desabilitar */
 	public void disabledInit() {
 		pistons.setArmEnable(false);
-		pistons.setclimbFront(false);
-		pistons.setClimbBack(false);
+		// pistons.setclimbFront(false);
+		// pistons.setClimbBack(false);
 		pistons.setIntake(false);
 	}
 

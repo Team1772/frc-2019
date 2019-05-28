@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
 public class ArmPID extends PIDSubsystem {
     TalonSRX left, right;
     double targetAngle = 0;
@@ -34,12 +33,13 @@ public class ArmPID extends PIDSubsystem {
      *
      * HERE START PID
      *
-     * EXAMPLE FROM: https://github.com/frc1334/DeepSpace2019/blob/535e31b0e5dc3b4784712ad677682548762e0a22/DeepSpace2019/src/main/java/frc/robot/subsystems/ArmSubsystem.java
+     * EXAMPLE FROM:
+     * https://github.com/frc1334/DeepSpace2019/blob/535e31b0e5dc3b4784712ad677682548762e0a22/DeepSpace2019/src/main/java/frc/robot/subsystems/ArmSubsystem.java
      *
      */
 
     // This method sets the destination angle/set point
-    public void setDestAngle (double dAngle) {
+    public void setDestAngle(double dAngle) {
         this.targetAngle = dAngle;
     }
 
@@ -67,41 +67,39 @@ public class ArmPID extends PIDSubsystem {
 
     // Ignore this part.. is only for prints
     /**
-	 * @param units CTRE mag encoder sensor units 
-	 * @return degrees rounded to tenths.
-	 */
-	String ToDeg(int units) {
-		double deg = units * 360.0 / 4096.0;
+     * @param units CTRE mag encoder sensor units
+     * @return degrees rounded to tenths.
+     */
+    String ToDeg(int units) {
+        double deg = units * 360.0 / 4096.0;
 
-		/* truncate to 0.1 res */
-		deg *= 10;
-		deg = (int) deg;
-		deg /= 10;
+        /* truncate to 0.1 res */
+        deg *= 10;
+        deg = (int) deg;
+        deg /= 10;
 
-		return "" + deg;
+        return "" + deg;
     }
 
     /**
-	 * Get the selected sensor register and print it
-	 */
-	public void print() {
-		/**
-		 * Quadrature is selected for soft-lim/closed-loop/etc. initQuadrature()
-		 * will initialize quad to become absolute by using PWD
-		 */
-		int selSenPos = right.getSelectedSensorPosition(0);
-		int pulseWidthWithoutOverflows = right.getSensorCollection().getPulseWidthPosition() & 0xFFF;
+     * Get the selected sensor register and print it
+     */
+    public void print() {
+        /**
+         * Quadrature is selected for soft-lim/closed-loop/etc. initQuadrature() will
+         * initialize quad to become absolute by using PWD
+         */
+        int selSenPos = right.getSelectedSensorPosition(0);
+        int pulseWidthWithoutOverflows = right.getSensorCollection().getPulseWidthPosition() & 0xFFF;
 
-		/**
-		 * Display how we've adjusted PWM to produce a QUAD signal that is
-		 * absolute and continuous. Show in sensor units and in rotation
-		 * degrees.
-		 */
-		System.out.print("pulseWidPos:" + pulseWidthWithoutOverflows +
-						 "   =>    " + "selSenPos:" + selSenPos);
-		System.out.print("      ");
-		System.out.print("pulseWidDeg:" + ToDeg(pulseWidthWithoutOverflows) +
-						 "   =>    " + "selSenDeg:" + ToDeg(selSenPos));
-		System.out.println();
-	}
+        /**
+         * Display how we've adjusted PWM to produce a QUAD signal that is absolute and
+         * continuous. Show in sensor units and in rotation degrees.
+         */
+        System.out.print("pulseWidPos:" + pulseWidthWithoutOverflows + "   =>    " + "selSenPos:" + selSenPos);
+        System.out.print("      ");
+        System.out.print(
+                "pulseWidDeg:" + ToDeg(pulseWidthWithoutOverflows) + "   =>    " + "selSenDeg:" + ToDeg(selSenPos));
+        System.out.println();
+    }
 }
